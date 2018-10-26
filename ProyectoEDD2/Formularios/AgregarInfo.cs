@@ -34,12 +34,11 @@ namespace ProyectoEDD2.Formularios
                 encabezado = reader.ReadLine();
                 string[] fila = encabezado.Split(divisores, StringSplitOptions.RemoveEmptyEntries);
                 int x = 0;
-                int y = 0;
                 for (int i = 1; i < fila.Length; i += 2)
                 {
                     dataGridView1.Columns.Add(fila[x],fila[x]);
                     dataGridView1.Columns[fila[x]].Width = 150;
-                    ((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x].ToString()]).MaxInputLength = Convert.ToInt32(fila[i]);
+                    ((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
                     x = x + 2;
                 }
 
