@@ -1,1 +1,1 @@
-Nombre|30||Apellido|40||
+Nombre|10||Apellido|10||
