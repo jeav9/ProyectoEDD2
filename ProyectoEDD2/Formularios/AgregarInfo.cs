@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ProyectoEDD2.Formularios
+{
+    public partial class AgregarInfo : Form
+    {
+        public AgregarInfo()
+        {
+            InitializeComponent();
+        }
+        #region variables
+        StreamReader reader;
+        string[] divisores = { "|", "||" };
+        string encabezado;
+        #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                label1.Text = openFileDialog1.FileName;
+                reader = new StreamReader(openFileDialog1.FileName);
+                encabezado = reader.ReadLine();
+                string[] fila = encabezado.Split(divisores, StringSplitOptions.RemoveEmptyEntries);
+                for (int i=0;i<fila.Length;i+=2)
+                {
+                    dataGridView1.Columns.Add(fila[i],fila[i]);
+                }                
+            }
+           
+        }
+    }
+}

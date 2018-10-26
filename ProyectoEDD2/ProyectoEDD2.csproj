@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\AgregarInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\AgregarInfo.Designer.cs">
+      <DependentUpon>AgregarInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\AgregarInfo.resx">
+      <DependentUpon>AgregarInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\CrearTabla.resx">
       <DependentUpon>CrearTabla.cs</DependentUpon>
     </EmbeddedResource>

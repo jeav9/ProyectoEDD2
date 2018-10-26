@@ -23,5 +23,12 @@ namespace ProyectoEDD2
             table.MdiParent = this;
             table.Show();
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Formularios.AgregarInfo agregar = new Formularios.AgregarInfo();
+            agregar.MdiParent = this;
+            agregar.Show();
+        }
     }
 }
