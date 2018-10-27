@@ -1,0 +1,3 @@
+id|3||nombre|30||
+001|Jorge Alvarez|
+002|Elias Perez|
