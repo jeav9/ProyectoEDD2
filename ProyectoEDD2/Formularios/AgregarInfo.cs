@@ -25,6 +25,8 @@ namespace ProyectoEDD2.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dataGridView1.Columns.Clear();
+            dataGridView2.Columns.Clear();
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
