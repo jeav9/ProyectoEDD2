@@ -41,15 +41,65 @@ namespace ProyectoEDD2.Formularios
                     ((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
                     x = x + 2;
                 }
-
+                dataGridView1.AllowUserToAddRows = true;
             }
-
+            reader.Close();
+            lectura();
         }
 
+        private void lectura()
+        {
+            
+            using (StreamReader sr = new StreamReader(label1.Text))
+            {
+                string line=String.Empty;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string text = "";
+                    for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
+                    {
+                        string[] fila = text.Split(new char[] { '|' });
+                        dataGridView1.Rows.Add(fila);
+                    }
+                }
+                sr.Close();
+            }
+            
+
+        }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var stream = File.Open(label1.Text, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+            using (var readers = new StreamReader(stream))
+            using (var writer = new StreamWriter(stream))
+            {
+                long posicion = stream.Length == 0 ? 0 : -1;
+                stream.Seek(posicion, SeekOrigin.End);
+                string final = readers.ReadToEnd();
+                if (final.Length != 0 && !final.Equals("\n", StringComparison.Ordinal))
+                {
+                    writer.Write(Environment.NewLine);
+                }
+
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    {
+                        writer.Write(dataGridView1.Rows[i].Cells[j].Value.ToString() + "|");
+                    }
+                }
+            }
         }
     }
 }
