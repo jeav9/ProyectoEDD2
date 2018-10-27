@@ -39,9 +39,12 @@ namespace ProyectoEDD2.Formularios
                     dataGridView1.Columns.Add(fila[x],fila[x]);
                     dataGridView1.Columns[fila[x]].Width = 150;
                     ((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
+                    //Grid 2
+                    dataGridView2.Columns.Add(fila[x], fila[x]);
+                    dataGridView2.Columns[fila[x]].Width = 150;
+                    ((DataGridViewTextBoxColumn)dataGridView2.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
                     x = x + 2;
                 }
-                dataGridView1.AllowUserToAddRows = true;
             }
             reader.Close();
             lectura();
@@ -59,7 +62,7 @@ namespace ProyectoEDD2.Formularios
                     for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
                     {
                         string[] fila = text.Split(new char[] { '|' });
-                        dataGridView1.Rows.Add(fila);
+                        dataGridView2.Rows.Add(fila);
                     }
                 }
                 sr.Close();
@@ -100,6 +103,15 @@ namespace ProyectoEDD2.Formularios
                     }
                 }
             }
+            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
+            lectura();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

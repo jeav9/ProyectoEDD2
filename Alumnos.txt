@@ -1,3 +1,7 @@
 Nombre|10||Apellido|10||
 Jorge|Alvarez|
-Jorge|Alvarez|
+Jose|Perez|
+Elias|Escoto|
+Juan|Perez|
+Erick|Rodriguez|
+Marcos|Turcios|
