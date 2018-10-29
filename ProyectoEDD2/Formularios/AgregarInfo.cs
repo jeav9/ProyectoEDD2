@@ -117,5 +117,10 @@ namespace ProyectoEDD2.Formularios
         {
             this.Close();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
