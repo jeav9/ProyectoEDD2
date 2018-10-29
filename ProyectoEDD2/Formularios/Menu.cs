@@ -30,5 +30,12 @@ namespace ProyectoEDD2
             agregar.MdiParent = this;
             agregar.Show();
         }
+
+
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
