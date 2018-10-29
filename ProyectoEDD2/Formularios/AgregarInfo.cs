@@ -54,7 +54,7 @@ namespace ProyectoEDD2.Formularios
 
         private void lectura()
         {
-            
+            int cont = 0;
             using (StreamReader sr = new StreamReader(label1.Text))
             {
                 string line=String.Empty;
@@ -65,9 +65,11 @@ namespace ProyectoEDD2.Formularios
                     {
                         string[] fila = text.Split(new char[] { '|' });
                         dataGridView2.Rows.Add(fila);
+                        cont++;
                     }
                 }
                 sr.Close();
+                MessageBox.Show("Cantidad de registros: "+cont);
             }
             
 
