@@ -83,6 +83,8 @@ namespace ProyectoEDD2.Formularios
                     {
                         sw.Write(dataGridView1.Rows[i].Cells[0].Value.ToString()+"|"+ dataGridView1.Rows[i].Cells[1].Value.ToString()+"||");
                     }
+                    sw.Write(Environment.NewLine);
+                    sw.Write("*");
                     sw.Close();
                     dataGridView1.Rows.Clear();
                 }

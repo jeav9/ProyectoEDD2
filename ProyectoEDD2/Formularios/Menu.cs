@@ -37,5 +37,12 @@ namespace ProyectoEDD2
         {
             
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Formularios.EliminarT eliminar = new Formularios.EliminarT();
+            eliminar.MdiParent = this;
+            eliminar.Show();
+        }
     }
 }

@@ -1,4 +1,2 @@
-id|3||nombre|30||
-001|Jorge Alvarez|
-002|Elias Perez|
-003|Carmencita|
+001|Lopez|
+002|Poaloah|
