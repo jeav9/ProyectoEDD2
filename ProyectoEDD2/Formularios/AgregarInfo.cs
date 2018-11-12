@@ -138,7 +138,7 @@ namespace ProyectoEDD2.Formularios
         void guardardatos()
         {
             TextWriter texto = new StreamWriter(label2.Text);
-            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
                 for (int j = 0; j < dataGridView2.Columns.Count; j++)
                 {
@@ -194,9 +194,9 @@ namespace ProyectoEDD2.Formularios
                     stream.Seek(posicion, SeekOrigin.End);
                     string final = readers.ReadToEnd();
                     if (final.Length != 0 && !final.Equals("\n", StringComparison.Ordinal))
-                    {
+                     {
                         writer.Write(Environment.NewLine);
-                    }
+                     }
                     for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                     {
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)

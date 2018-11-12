@@ -44,6 +44,7 @@ namespace ProyectoEDD2.Formularios
             string Slinea = reader.ReadLine();
             if (Slinea == "*")
             {
+                reader.Close();
                 return;
             }
             else
@@ -91,10 +92,11 @@ namespace ProyectoEDD2.Formularios
                             }
                             dataGridView2.Rows.Add(rowIndex.ToString());
                             break;
-                    }
                 }
-            
+            }
+            textBox1.Text = "";
         }
+
         void listaD()
         {
             //Actualizando el archivo con la lista de disponibles actual
@@ -117,12 +119,15 @@ namespace ProyectoEDD2.Formularios
         void listaDllenado()
         {
             string[] divisor = { "|" };
-            string linea = File.ReadLines(label1.Text).Skip(1).Take(1).First();
-            string[] fila = linea.Split(divisor, StringSplitOptions.RemoveEmptyEntries);
+            StreamReader writer = new StreamReader(label1.Text);
+            string linea = writer.ReadLine();
+            string linea2 = writer.ReadLine();
+            string[] fila = linea2.Split(divisor, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < fila.Length; i++)
             {
                 dataGridView2.Rows.Add(fila[i]);
             }
+            writer.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -138,12 +143,12 @@ namespace ProyectoEDD2.Formularios
             }
             texto.Close();
             listaD();
+            MessageBox.Show("La lista de disponibles se ha actualizado exitosamente en su respectivo archivo");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            listaD();
-            MessageBox.Show("La lista de disponibles se ha actualizado exitosamente en su respectivo archivo");
+           
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
