@@ -89,6 +89,7 @@ namespace ProyectoEDD2.Formularios
                 }
                 CargarDatos(nombre);
                 string Slinea = reader.ReadLine();
+                reader.Close();
                 if (Slinea == "*")
                 {
                     return;
@@ -98,8 +99,6 @@ namespace ProyectoEDD2.Formularios
                     listaD(archivo[0] + "Header.txt" );
                 }
             }
-            
-            reader.Close();
         }
 
         void listaD(string name)
@@ -187,5 +186,6 @@ namespace ProyectoEDD2.Formularios
                 lectura();
             }
         }
+
     }
 }

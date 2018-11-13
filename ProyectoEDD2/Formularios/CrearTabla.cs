@@ -47,6 +47,7 @@ namespace ProyectoEDD2.Formularios
                     this.dataGridView1.Rows.Add(fila);
                     x=x+2;
                 }
+                reader.Close();
             }
         }
 

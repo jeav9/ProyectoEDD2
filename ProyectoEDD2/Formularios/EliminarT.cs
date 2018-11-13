@@ -61,16 +61,16 @@ namespace ProyectoEDD2.Formularios
                 CargarDatos(nombre);
             }
             string Slinea = reader.ReadLine();
+            reader.Close();
             if (Slinea == "*")
             {
-                reader.Close();
                 return;
             }
             else
             {
                 listaDllenado();
+
             }
-            reader.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
