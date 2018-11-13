@@ -22,14 +22,32 @@ namespace ProyectoEDD2.Formularios
         string[] divisores = { "|", "||" };
         string encabezado;
         #endregion
+        private void CargarDatos(string name)
+        {
+            using (StreamReader sr = new StreamReader(name))
+            {
+                string text = "";
+                for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
+                {
+                    string[] fila = text.Split(new char[] { '|' });
+                    dataGridView1.Rows.Add(fila);
+                }
+                sr.Close();
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            string nombre;
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                label1.Text = openFileDialog1.FileName;
-                reader = new StreamReader(openFileDialog1.FileName);
+                string[] archivo = openFileDialog1.FileName.Split('.');
+                label1.Text = archivo[0]+"Header.txt";
+                nombre = archivo[0] + ".txt";
+                label2.Text = nombre;
+                reader = new StreamReader(label1.Text);
                 encabezado = reader.ReadLine();
                 string[] fila = encabezado.Split(divisores, StringSplitOptions.RemoveEmptyEntries);
                 int x = 0;
@@ -40,6 +58,7 @@ namespace ProyectoEDD2.Formularios
                     ((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
                     x = x + 2;
                 }
+                CargarDatos(nombre);
             }
             string Slinea = reader.ReadLine();
             if (Slinea == "*")
@@ -52,27 +71,6 @@ namespace ProyectoEDD2.Formularios
                 listaDllenado();
             }
             reader.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.FileName = "";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                label2.Text = openFileDialog1.FileName;
-                using (StreamReader sr = new StreamReader(label2.Text))
-                {
-                    string text = "";
-                    for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
-                    {
-                        string[] fila = text.Split(new char[] { '|' });
-                        dataGridView1.Rows.Add(fila);
-                    }
-                    sr.Close();
-                }
-            }
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -145,27 +143,6 @@ namespace ProyectoEDD2.Formularios
             listaD();
             MessageBox.Show("La lista de disponibles se ha actualizado exitosamente en su respectivo archivo");
         }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             this.Close();

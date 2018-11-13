@@ -1,4 +1,0 @@
-Codigo|10||Nombre|10||
-01|Pizza|
-02|Arroz|
-03|Carne|

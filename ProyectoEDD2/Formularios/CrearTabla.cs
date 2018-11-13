@@ -78,7 +78,8 @@ namespace ProyectoEDD2.Formularios
                 saveFileDialog1.Filter = "Archivos txt (*.txt)|*.txt";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
+                    string[] ruta = saveFileDialog1.FileName.Split('.');
+                    StreamWriter sw = new StreamWriter(ruta[0]+"Header.txt");
                     for (int i = 0; i < dataGridView1.RowCount; i++)
                     {
                         sw.Write(dataGridView1.Rows[i].Cells[0].Value.ToString()+"|"+ dataGridView1.Rows[i].Cells[1].Value.ToString()+"||");
@@ -87,7 +88,11 @@ namespace ProyectoEDD2.Formularios
                     sw.Write("*");
                     sw.Close();
                     dataGridView1.Rows.Clear();
+                    StreamWriter datos = new StreamWriter(ruta[0]+".txt");
+                    datos.Close();
                 }
+                
+                
             }
             else
             {

@@ -24,10 +24,6 @@ namespace ProyectoEDD2.Formularios
         string encabezado;
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void lectura()
         {
@@ -44,20 +40,18 @@ namespace ProyectoEDD2.Formularios
 
         }
 
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+      private void CargarDatos(string name)
         {
-
-        }
-
-        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-           
-
+            using (StreamReader sr = new StreamReader(name))
+            {
+                string text = "";
+                for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
+                {
+                    string[] fila = text.Split(new char[] { '|' });
+                    dataGridView2.Rows.Add(fila);
+                }
+                sr.Close();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -65,21 +59,20 @@ namespace ProyectoEDD2.Formularios
             this.Close();
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
+            string nombre;
             dataGridView1.Columns.Clear();
             dataGridView2.Columns.Clear();
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                label1.Text = openFileDialog1.FileName;
-                reader = new StreamReader(openFileDialog1.FileName);
+                string[] archivo = openFileDialog1.FileName.Split('.');
+                nombre = archivo[0] + ".txt";
+                label2.Text = nombre;
+                label1.Text = archivo[0] + "Header.txt";
+                reader = new StreamReader(archivo[0]+"Header.txt");
                 encabezado = reader.ReadLine();
                 string[] fila = encabezado.Split(divisores, StringSplitOptions.RemoveEmptyEntries);
                 int x = 0;
@@ -94,47 +87,31 @@ namespace ProyectoEDD2.Formularios
                     ((DataGridViewTextBoxColumn)dataGridView2.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
                     x = x + 2;
                 }
+                CargarDatos(nombre);
+                string Slinea = reader.ReadLine();
+                if (Slinea == "*")
+                {
+                    return;
+                }
+                else
+                {
+                    listaD(archivo[0] + "Header.txt" );
+                }
             }
-            string Slinea = reader.ReadLine();
-            if (Slinea=="*")
-            {
-                return;
-            }
-            else
-            {
-                listaD();
-            }
+            
             reader.Close();
         }
 
-        void listaD()
+        void listaD(string name)
         {
-            string linea = File.ReadLines(label1.Text).Skip(1).Take(1).First();
+            string linea = File.ReadLines(name).Skip(1).Take(1).First();
             string[] fila = linea.Split(divisor, StringSplitOptions.RemoveEmptyEntries);
             for(int i = 0; i < fila.Length; i++)
             {
                 dataGridView3.Rows.Add(fila[i]);
             }
         }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.FileName = "";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                label2.Text = openFileDialog1.FileName;
-                using (StreamReader sr = new StreamReader(label2.Text))
-                {
-                    string text = "";
-                    for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
-                    {
-                        string[] fila = text.Split(new char[] { '|' });
-                        dataGridView2.Rows.Add(fila);
-                    }
-                    sr.Close();
-                }
-            }
-        }
+     
         void guardardatos()
         {
             TextWriter texto = new StreamWriter(label2.Text);
