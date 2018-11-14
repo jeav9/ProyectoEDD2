@@ -38,6 +38,7 @@ namespace ProyectoEDD2.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
             string nombre;
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -70,7 +71,7 @@ namespace ProyectoEDD2.Formularios
             {
                 listaDllenado();
 
-            }
+            }           
         }
 
         private void button3_Click(object sender, EventArgs e)
