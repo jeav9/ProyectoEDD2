@@ -31,13 +31,6 @@ namespace ProyectoEDD2
             agregar.Show();
         }
 
-
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Formularios.EliminarT eliminar = new Formularios.EliminarT();

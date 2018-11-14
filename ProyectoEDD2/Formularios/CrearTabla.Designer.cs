@@ -40,9 +40,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tamano = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,6 +59,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.splitContainer1.Panel1.Controls.Add(this.btnSalir);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.txtNombre);
@@ -80,17 +81,18 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnSalir.Location = new System.Drawing.Point(224, 409);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(184, 30);
             this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(224, 357);
+            this.button3.Location = new System.Drawing.Point(224, 302);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(184, 32);
             this.button3.TabIndex = 5;
@@ -107,7 +109,7 @@
             // 
             // btnLeer
             // 
-            this.btnLeer.Location = new System.Drawing.Point(224, 305);
+            this.btnLeer.Location = new System.Drawing.Point(224, 356);
             this.btnLeer.Name = "btnLeer";
             this.btnLeer.Size = new System.Drawing.Size(184, 30);
             this.btnLeer.TabIndex = 4;
