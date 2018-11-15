@@ -55,7 +55,7 @@ namespace ProyectoEDD2.Formularios
         {
             if (textBox1.Text == string.Empty || textBox2.Text == string.Empty)
             {
-                MessageBox.Show("No puedes dejar campos vacios");
+                MessageBox.Show("No puede dejar campos vacios");
             }
             else
             {

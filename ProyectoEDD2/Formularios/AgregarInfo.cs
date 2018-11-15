@@ -77,30 +77,16 @@ namespace ProyectoEDD2.Formularios
                 encabezado = reader.ReadLine();
                 string[] fila = encabezado.Split(divisores, StringSplitOptions.RemoveEmptyEntries);
                 int x = 0;
-                int y = 1;
-                for (int i = 2; i < fila.Length; i += 3)
+                for (int i = 1; i < fila.Length; i += 2)
                 {
-                    DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-                    column.Name = fila[x];
-                    column.HeaderText = fila[x];
-                    column.MaxInputLength= Convert.ToInt32(fila[y]);
-                    column.DefaultCellStyle.BackColor = Color.LightGray;
-                    column.ValueType = typeof(int);
-                    dataGridView1.Columns.Add(column);
-                    //dataGridView1.Columns.Add(fila[x], fila[x]);
-                    //dataGridView1.Columns[fila[x]].Width = 150;
-                    //((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[y]);
-                    //if (fila[i].Equals("int"))
-                    //{
-                    //((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).
-                    //    CellTemplate.ValueType = typeof(int);
-                    //}
+                    dataGridView1.Columns.Add(fila[x], fila[x]);
+                    dataGridView1.Columns[fila[x]].Width = 150;
+                    ((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
                     //Grid 2
                     dataGridView2.Columns.Add(fila[x], fila[x]);
                     dataGridView2.Columns[fila[x]].Width = 150;
-                    ((DataGridViewTextBoxColumn)dataGridView2.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[y]);
-                    x = x + 3;
-                    y = y + 3;
+                    ((DataGridViewTextBoxColumn)dataGridView2.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
+                    x = x + 2;
                 }
                 CargarDatos(nombre);
                 string Slinea = reader.ReadLine();

@@ -77,21 +77,44 @@ namespace ProyectoEDD2.Formularios
         private void button3_Click(object sender, EventArgs e)
         {
             string valor = textBox1.Text;
-            int rowIndex = -1;
-            
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            int Indice = -1;
+            bool encontrado=false;
+            if (valor == "")
             {
-                if (row.Cells[0].Value.ToString().Equals(valor))
+                MessageBox.Show("No puede dejar campos vacios", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                            rowIndex = row.Index;
-                            DataGridViewRow eliminar = dataGridView1.Rows[rowIndex];
+                    if (row.Cells[0].Value.ToString().Equals(valor))
+                    {
+                        encontrado = true;
+                        Indice = row.Index;
+                        DataGridViewRow eliminar = dataGridView1.Rows[Indice];
+                        eliminar.Selected = true;
+                        DialogResult Resultado = MessageBox.Show("¿Desea eliminar este registro?", "Eliminar registro", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                          if (Resultado == DialogResult.Yes)
+                          {
+                             eliminar.Selected = false;
                             for (int i = 0; i < dataGridView1.Columns.Count; i++)
                             {
-                                eliminar.Cells[i].Value = "";
+                              eliminar.Cells[i].Value = "";
                             }
-                            dataGridView2.Rows.Add(rowIndex.ToString());
+                            //Aqui agregamos los eliminados a la lista de disponibles
+                            dataGridView2.Rows.Add(Indice.ToString());
                             break;
+                          }
+                          else if (Resultado == DialogResult.No)
+                          {
+                            eliminar.Selected = false;
+                            MessageBox.Show("Registro no eliminado", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                          }
+                    }
                 }
+            if (encontrado==false)
+            {
+                MessageBox.Show("Su codigo no se encontro en este archivo, intente de nuevo");
             }
             textBox1.Text = "";
         }
@@ -132,7 +155,7 @@ namespace ProyectoEDD2.Formularios
         private void button4_Click(object sender, EventArgs e)
         {
             TextWriter texto = new StreamWriter(label2.Text);
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 for (int j = 0; j < dataGridView1.Columns.Count; j++)
                 {
