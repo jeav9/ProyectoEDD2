@@ -64,6 +64,7 @@ namespace ProyectoEDD2.Formularios
             string nombre;
             dataGridView1.Columns.Clear();
             dataGridView2.Columns.Clear();
+            dataGridView3.Rows.Clear();
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
