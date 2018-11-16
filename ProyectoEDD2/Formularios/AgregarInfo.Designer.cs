@@ -41,6 +41,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +62,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.BTNCargarTabla);
@@ -87,9 +89,9 @@
             this.label6.Location = new System.Drawing.Point(99, 10);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 24);
+            this.label6.Size = new System.Drawing.Size(109, 24);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Información";
+            this.label6.Text = "Cargar Tabla";
             // 
             // label2
             // 
@@ -104,26 +106,29 @@
             // 
             // BTNCargarTabla
             // 
+            this.BTNCargarTabla.BackgroundImage = global::ProyectoEDD2.Properties.Resources._003_subir;
+            this.BTNCargarTabla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BTNCargarTabla.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNCargarTabla.Location = new System.Drawing.Point(67, 47);
+            this.BTNCargarTabla.Location = new System.Drawing.Point(103, 39);
             this.BTNCargarTabla.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCargarTabla.Name = "BTNCargarTabla";
-            this.BTNCargarTabla.Size = new System.Drawing.Size(181, 39);
+            this.BTNCargarTabla.Size = new System.Drawing.Size(90, 47);
             this.BTNCargarTabla.TabIndex = 3;
-            this.BTNCargarTabla.Text = "Cargar Tabla";
+            this.BTNCargarTabla.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BTNCargarTabla.UseVisualStyleBackColor = true;
             this.BTNCargarTabla.Click += new System.EventHandler(this.button5_Click);
             // 
             // BTNSalir
             // 
             this.BTNSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BTNSalir.BackgroundImage = global::ProyectoEDD2.Properties.Resources._004_cancelar;
+            this.BTNSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BTNSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNSalir.Location = new System.Drawing.Point(1070, 39);
+            this.BTNSalir.Location = new System.Drawing.Point(1079, 39);
             this.BTNSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BTNSalir.Name = "BTNSalir";
-            this.BTNSalir.Size = new System.Drawing.Size(84, 47);
+            this.BTNSalir.Size = new System.Drawing.Size(64, 47);
             this.BTNSalir.TabIndex = 2;
-            this.BTNSalir.Text = "Salir";
             this.BTNSalir.UseVisualStyleBackColor = false;
             this.BTNSalir.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -207,6 +212,16 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1083, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 25);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Salir";
+            // 
             // AgregarInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -251,5 +266,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Disponibles;
         private System.Windows.Forms.Button BTNGuardar;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
     }
 }

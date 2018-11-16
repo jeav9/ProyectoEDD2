@@ -171,5 +171,6 @@ namespace ProyectoEDD2.Formularios
         {
             this.Close();
         }
+
     }
 }

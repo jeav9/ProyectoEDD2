@@ -42,6 +42,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label7 = new System.Windows.Forms.Label();
             this.BTNSalir = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -62,7 +63,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(16, 191);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(760, 338);
             this.dataGridView1.TabIndex = 0;
@@ -70,12 +71,12 @@
             // BTNCargarTabla
             // 
             this.BTNCargarTabla.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNCargarTabla.Location = new System.Drawing.Point(39, 54);
-            this.BTNCargarTabla.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNCargarTabla.Image = global::ProyectoEDD2.Properties.Resources._003_subir;
+            this.BTNCargarTabla.Location = new System.Drawing.Point(79, 62);
+            this.BTNCargarTabla.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCargarTabla.Name = "BTNCargarTabla";
-            this.BTNCargarTabla.Size = new System.Drawing.Size(183, 46);
+            this.BTNCargarTabla.Size = new System.Drawing.Size(95, 64);
             this.BTNCargarTabla.TabIndex = 1;
-            this.BTNCargarTabla.Text = "Cargar Tabla";
             this.BTNCargarTabla.UseVisualStyleBackColor = true;
             this.BTNCargarTabla.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -108,7 +109,7 @@
             // BTNEliminar
             // 
             this.BTNEliminar.Location = new System.Drawing.Point(49, 89);
-            this.BTNEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNEliminar.Name = "BTNEliminar";
             this.BTNEliminar.Size = new System.Drawing.Size(164, 28);
             this.BTNEliminar.TabIndex = 5;
@@ -119,7 +120,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(49, 53);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(163, 22);
             this.textBox1.TabIndex = 6;
@@ -143,7 +144,7 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Disponibles});
             this.dataGridView2.Location = new System.Drawing.Point(23, 60);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(191, 469);
             this.dataGridView2.TabIndex = 8;
@@ -156,7 +157,7 @@
             // BTNGuardar
             // 
             this.BTNGuardar.Location = new System.Drawing.Point(329, 537);
-            this.BTNGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNGuardar.Name = "BTNGuardar";
             this.BTNGuardar.Size = new System.Drawing.Size(128, 28);
             this.BTNGuardar.TabIndex = 9;
@@ -171,7 +172,7 @@
             this.panel1.Controls.Add(this.BTNEliminar);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(512, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(263, 140);
             this.panel1.TabIndex = 11;
@@ -191,11 +192,12 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label7);
             this.splitContainer1.Panel1.Controls.Add(this.BTNSalir);
             this.splitContainer1.Panel1.Controls.Add(this.panel2);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
@@ -214,16 +216,26 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 12;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(32, 126);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 25);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Salir";
+            // 
             // BTNSalir
             // 
             this.BTNSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.BTNSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNSalir.Location = new System.Drawing.Point(15, 138);
+            this.BTNSalir.Image = global::ProyectoEDD2.Properties.Resources._004_cancelar;
+            this.BTNSalir.Location = new System.Drawing.Point(16, 77);
             this.BTNSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BTNSalir.Name = "BTNSalir";
             this.BTNSalir.Size = new System.Drawing.Size(84, 47);
             this.BTNSalir.TabIndex = 8;
-            this.BTNSalir.Text = "Salir";
             this.BTNSalir.UseVisualStyleBackColor = false;
             this.BTNSalir.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -232,7 +244,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.BTNCargarTabla);
             this.panel2.Location = new System.Drawing.Point(235, 15);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(267, 140);
             this.panel2.TabIndex = 13;
@@ -244,9 +256,9 @@
             this.label6.Location = new System.Drawing.Point(75, 17);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 24);
+            this.label6.Size = new System.Drawing.Size(104, 24);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Información";
+            this.label6.Text = "Cargar tabla";
             // 
             // label5
             // 
@@ -267,7 +279,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EliminarT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de disponibles";
@@ -308,5 +320,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BTNSalir;
+        private System.Windows.Forms.Label label7;
     }
 }
