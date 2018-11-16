@@ -29,7 +29,7 @@ namespace ProyectoEDD2.Formularios
         {
             using (StreamReader sr = new StreamReader(label2.Text))
             {
-                string text = "";
+                string text = String.Empty;
                 for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
                 {
                     string[] fila = text.Split(new char[] { '|' });
@@ -44,7 +44,7 @@ namespace ProyectoEDD2.Formularios
         {
             using (StreamReader sr = new StreamReader(name))
             {
-                string text = "";
+                string text = String.Empty;
                 for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
                 {
                     string[] fila = text.Split(new char[] { '|' });

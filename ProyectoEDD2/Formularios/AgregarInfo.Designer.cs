@@ -31,10 +31,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BTNCargarTabla = new System.Windows.Forms.Button();
+            this.BTNSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.BTNGuardar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Disponibles = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,14 +63,14 @@
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.button5);
-            this.splitContainer1.Panel1.Controls.Add(this.button3);
+            this.splitContainer1.Panel1.Controls.Add(this.BTNCargarTabla);
+            this.splitContainer1.Panel1.Controls.Add(this.BTNSalir);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Panel2.Controls.Add(this.button6);
+            this.splitContainer1.Panel2.Controls.Add(this.BTNGuardar);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView3);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView2);
@@ -102,30 +102,30 @@
             this.label2.Text = "label2";
             this.label2.Visible = false;
             // 
-            // button5
+            // BTNCargarTabla
             // 
-            this.button5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(67, 47);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(181, 39);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Cargar Tabla";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.BTNCargarTabla.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCargarTabla.Location = new System.Drawing.Point(67, 47);
+            this.BTNCargarTabla.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCargarTabla.Name = "BTNCargarTabla";
+            this.BTNCargarTabla.Size = new System.Drawing.Size(181, 39);
+            this.BTNCargarTabla.TabIndex = 3;
+            this.BTNCargarTabla.Text = "Cargar Tabla";
+            this.BTNCargarTabla.UseVisualStyleBackColor = true;
+            this.BTNCargarTabla.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button3
+            // BTNSalir
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(1104, 10);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(84, 47);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Salir";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.BTNSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BTNSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNSalir.Location = new System.Drawing.Point(1070, 39);
+            this.BTNSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BTNSalir.Name = "BTNSalir";
+            this.BTNSalir.Size = new System.Drawing.Size(84, 47);
+            this.BTNSalir.TabIndex = 2;
+            this.BTNSalir.Text = "Salir";
+            this.BTNSalir.UseVisualStyleBackColor = false;
+            this.BTNSalir.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -138,17 +138,17 @@
             this.label1.Text = "Nombre de la tabla";
             this.label1.Visible = false;
             // 
-            // button6
+            // BTNGuardar
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(12, 82);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(181, 36);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "Guardar datos";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.BTNGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNGuardar.Location = new System.Drawing.Point(12, 82);
+            this.BTNGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BTNGuardar.Name = "BTNGuardar";
+            this.BTNGuardar.Size = new System.Drawing.Size(181, 36);
+            this.BTNGuardar.TabIndex = 9;
+            this.BTNGuardar.Text = "Guardar datos";
+            this.BTNGuardar.UseVisualStyleBackColor = true;
+            this.BTNGuardar.Click += new System.EventHandler(this.button6_Click);
             // 
             // label3
             // 
@@ -243,13 +243,13 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BTNSalir;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button BTNCargarTabla;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Disponibles;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button BTNGuardar;
         private System.Windows.Forms.Label label6;
     }
 }
