@@ -112,7 +112,7 @@ namespace ProyectoEDD2.Formularios
             string valor = textBox3.Text;
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string folderNom = Path.Combine(ruta, textBox3.Text);
-            if (valor == "")
+            if (valor != "")
             {
                 if (!Directory.Exists(folderNom))
                 {
@@ -125,6 +125,10 @@ namespace ProyectoEDD2.Formularios
                     MessageBox.Show("El nombre de este folder ya existe en sus documentos, intente de nuevo", "Archivo de texto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox3.Text = "";
                 }
+            }
+            else
+            {
+                MessageBox.Show("No puede dejar campos vacios", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
