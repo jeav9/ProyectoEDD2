@@ -55,7 +55,7 @@ namespace ProyectoEDD2.Formularios
         {
             if (textBox1.Text == string.Empty || textBox2.Text == string.Empty)
             {
-                MessageBox.Show("No puede dejar campos vacios");
+                MessageBox.Show("No puede dejar campos vacios", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -97,7 +97,7 @@ namespace ProyectoEDD2.Formularios
             }
             else
             {
-                MessageBox.Show("Falta el nombre del archivo.");
+                MessageBox.Show("Falta el nombre del archivo", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -106,5 +106,33 @@ namespace ProyectoEDD2.Formularios
         {
             leer();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string valor = textBox3.Text;
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string folderNom = Path.Combine(ruta, textBox3.Text);
+            if (valor == "")
+            {
+                if (!Directory.Exists(folderNom))
+                {
+                    MessageBox.Show("El folder ha sido creado exitosamente", "Archivo de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Directory.CreateDirectory(folderNom);
+                    textBox3.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("El nombre de este folder ya existe en sus documentos, intente de nuevo", "Archivo de texto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox3.Text = "";
+                }
+            }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

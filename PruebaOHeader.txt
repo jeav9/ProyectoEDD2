@@ -1,0 +1,2 @@
+Codigo|10||Nombre|40||Apellido|40||Edad|3||
+2|
