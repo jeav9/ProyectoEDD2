@@ -38,7 +38,8 @@ namespace ProyectoEDD2.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            dataGridView2.Rows.Clear();
             string nombre;
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -92,7 +93,7 @@ namespace ProyectoEDD2.Formularios
                         Indice = row.Index;
                         DataGridViewRow eliminar = dataGridView1.Rows[Indice];
                         eliminar.Selected = true;
-                        DialogResult Resultado = MessageBox.Show("¿Desea eliminar este registro?", "Eliminar registro", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                        DialogResult Resultado = MessageBox.Show("¿Desea eliminar este registro?", "Archivos de texto", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                           if (Resultado == DialogResult.Yes)
                           {
                              eliminar.Selected = false;
@@ -107,14 +108,14 @@ namespace ProyectoEDD2.Formularios
                           else if (Resultado == DialogResult.No)
                           {
                             eliminar.Selected = false;
-                            MessageBox.Show("Registro no eliminado", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Registro no eliminado", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                           }
                     }
                 }
             if (encontrado==false)
             {
-                MessageBox.Show("Su codigo no se encontro en este archivo, intente de nuevo");
+                MessageBox.Show("Su codigo no se encontro en este archivo, intente de nuevo", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             textBox1.Text = "";
         }
@@ -165,12 +166,11 @@ namespace ProyectoEDD2.Formularios
             }
             texto.Close();
             listaD();
-            MessageBox.Show("La lista de disponibles se ha actualizado exitosamente en su respectivo archivo");
+            MessageBox.Show("Los registros y la lista de disponibles se han actualizado exitosamente en su respectivo archivo", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void button6_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
     }
 }

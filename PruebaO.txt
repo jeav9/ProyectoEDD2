@@ -1,0 +1,12 @@
+001|Ricardo|Manuel|69|
+002|Jorge|Zelaya|41|
+||||
+004|Efrain|Perez|10|
+005|Francisco|Zelaya|10|
+006|Juan|Perdomo|85|
+007|Bryan|Laz|47|
+008|Carmen|Nuez|47|
+006|Juan|Felipe|68|
+010|Felipe|Reyes|17|
+011|Juan|Jop|45|
+009|Jose|Elias|25|

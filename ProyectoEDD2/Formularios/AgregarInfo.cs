@@ -157,6 +157,7 @@ namespace ProyectoEDD2.Formularios
                     nuevo.Cells[i].Value = dataGridView1.Rows[0].Cells[i].Value.ToString();
                 }
                 dataGridView3.Rows.RemoveAt(0);
+                dataGridView1.Rows.Clear();
                 guardardatos();
                 lista();
             }
@@ -188,5 +189,9 @@ namespace ProyectoEDD2.Formularios
             }
         }
 
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
