@@ -85,6 +85,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\ArchivoHeader.cs" />
+    <Compile Include="Clases\ICrearArchivo.cs" />
+    <Compile Include="Clases\IndexArchivo.cs" />
+    <Compile Include="Clases\MainArchivo.cs" />
     <Compile Include="Formularios\AgregarInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,7 +147,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ProyectoEDD2_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
