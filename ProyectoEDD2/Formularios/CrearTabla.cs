@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using ProyectoEDD2.Clases;
 
 namespace ProyectoEDD2.Formularios
 {
@@ -18,6 +19,7 @@ namespace ProyectoEDD2.Formularios
             InitializeComponent();
         }
 
+        ICrearArchivo crear;
         private void CrearTabla_Load(object sender, EventArgs e)
         {
 
@@ -70,9 +72,8 @@ namespace ProyectoEDD2.Formularios
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             if (txtNombre.Text != string.Empty)
             {
                 saveFileDialog1.FileName = txtNombre.Text;
@@ -80,26 +81,22 @@ namespace ProyectoEDD2.Formularios
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string[] ruta = saveFileDialog1.FileName.Split('.');
-                    StreamWriter sw = new StreamWriter(ruta[0]+"Header.txt");
-                    for (int i = 0; i < dataGridView1.RowCount; i++)
-                    {
-                        sw.Write(dataGridView1.Rows[i].Cells[0].Value.ToString()+"|"+ dataGridView1.Rows[i].Cells[1].Value.ToString()+"||");
-                    }
-                    sw.Write(Environment.NewLine);
-                    sw.Write("*");
-                    sw.Close();
+
+                    //Crea Archivo header
+                    crear = new ArchivoHeader(ruta[0], dataGridView1);
+                    crear.CrearArchivo();
+
+                    //Crea Archivo de datos
                     dataGridView1.Rows.Clear();
-                    StreamWriter datos = new StreamWriter(ruta[0]+".txt");
-                    datos.Close();
-                }
-                
-                
+                    crear = new MainArchivo(ruta[0]);
+                    crear.CrearArchivo();
+                   
+                } 
             }
             else
             {
                 MessageBox.Show("Falta el nombre del archivo", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void btnLeer_Click(object sender, EventArgs e)
@@ -107,7 +104,7 @@ namespace ProyectoEDD2.Formularios
             leer();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCrear_Click(object sender, EventArgs e)
         {
             string valor = textBox3.Text;
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
