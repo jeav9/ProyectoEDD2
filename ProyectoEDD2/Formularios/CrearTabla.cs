@@ -86,8 +86,12 @@ namespace ProyectoEDD2.Formularios
                     crear = new ArchivoHeader(ruta[0], dataGridView1);
                     crear.CrearArchivo();
 
-                    //Crea Archivo de datos
+                    //Crea archivo de indices
+                    crear = new IndexArchivo(ruta[0]);
+                    crear.CrearArchivo();
+                    //Limpia la tabla
                     dataGridView1.Rows.Clear();
+                    //Crea Archivo de datos
                     crear = new MainArchivo(ruta[0]);
                     crear.CrearArchivo();
                    

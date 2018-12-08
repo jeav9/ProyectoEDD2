@@ -10,7 +10,7 @@ namespace ProyectoEDD2.Clases
 {
     class ArchivoHeader : ICrearArchivo
     {
-        private string nombre;
+        private string nombre { get; set; }
         private DataGridView data;
 
         public ArchivoHeader(string nombre, DataGridView data)

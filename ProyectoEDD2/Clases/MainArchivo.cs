@@ -9,13 +9,11 @@ namespace ProyectoEDD2.Clases
 {
     class MainArchivo : ICrearArchivo
     {
-        private string nombre;
-
+        private string nombre { get; set; }
         public MainArchivo(string nombre)
         {
             this.nombre = nombre;
         }
-
         public void CrearArchivo()
         {
             StreamWriter datos = new StreamWriter(nombre+".txt");
