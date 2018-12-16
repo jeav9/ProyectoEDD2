@@ -22,6 +22,7 @@ namespace ProyectoEDD2.Formularios
         StreamReader reader;
         DataTable IndicesDS = new DataTable("Indices");
         string TipoArbol;
+        string nombreIndice;
         string[] divisores = { "|", "||" };
         string[] divisor = { "|" };
         string encabezado;
@@ -153,18 +154,13 @@ namespace ProyectoEDD2.Formularios
 
         void guardarIndices()
         {
-            int index = 0;
-            if(this.IndicesDS.Rows.Count != 0)
-            {
-                index = this.IndicesDS.Rows.Count-1;
-            }
             string[] nombre = this.label2.Text.Split('.');
-            StreamWriter writer = new StreamWriter(nombre[0] + "Index.txt");
+            nombreIndice = nombre[0] + "index.txt";
+            StreamWriter writer = new StreamWriter(nombreIndice);
             writer.WriteLine(TipoArbol);
             for (int i=0; i < dataGridView2.Rows.Count; i++)
             {
-                writer.WriteLine(index + "|" + this.dataGridView2.Rows[i].Cells[0].Value+"|");
-                index++;
+                writer.WriteLine(i + "|" + this.dataGridView2.Rows[i].Cells[0].Value+"|");
             }
             writer.Close();
         }
