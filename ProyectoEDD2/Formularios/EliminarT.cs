@@ -57,7 +57,7 @@ namespace ProyectoEDD2.Formularios
             streamWriter.WriteLine(tipo);
             for(int i = 0; i < dt.Rows.Count; i++)
             {
-                streamWriter.WriteLine(dt.Rows[i][0]+"|"+dt.Rows[i][1]+"|");
+                streamWriter.Write(dt.Rows[i][0]+"|"+dt.Rows[i][1]+"|");
             }
             streamWriter.Close();
         }
