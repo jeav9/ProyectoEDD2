@@ -45,12 +45,9 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.idlbl = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // valor
@@ -59,6 +56,7 @@
             this.valor.Name = "valor";
             this.valor.Size = new System.Drawing.Size(100, 20);
             this.valor.TabIndex = 0;
+            this.valor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.valor_KeyPress);
             // 
             // InsertarBtn
             // 
@@ -130,7 +128,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 95);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(189, 365);
+            this.dataGridView1.Size = new System.Drawing.Size(179, 365);
             this.dataGridView1.TabIndex = 7;
             // 
             // label2
@@ -145,12 +143,11 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lblaltura);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(224, 95);
+            this.panel1.Location = new System.Drawing.Point(198, 95);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(664, 365);
+            this.panel1.Size = new System.Drawing.Size(690, 365);
             this.panel1.TabIndex = 15;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -201,31 +198,12 @@
             this.idlbl.Text = "Nombre";
             this.idlbl.Visible = false;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(13, 466);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(28, 34);
-            this.dataGridView2.TabIndex = 7;
-            this.dataGridView2.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(242, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(382, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "El buscar se arreglara apropiadamente cuando HAGAS TU PARTE!... ste Jorge";
-            // 
             // ArbolAVL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 512);
             this.ControlBox = false;
-            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.idlbl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
@@ -251,7 +229,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,7 +252,5 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label idlbl;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label3;
     }
 }

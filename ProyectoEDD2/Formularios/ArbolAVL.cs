@@ -18,14 +18,20 @@ namespace ProyectoEDD2.Formularios
         {
             InitializeComponent();
         }
+        #region variables
+        string[] divisores = { "|", "||" };
+        string[] divisor = { "|" };
         int cont = 0;
         int dato = 0;
         int datb = 0;
         int cont2 = 0;
-
         A_DibujarAVL arbolAVL = new A_DibujarAVL(null);
         A_DibujarAVL arbolAVL_Letra = new A_DibujarAVL(null);
-        Graphics g;
+        Graphics g;
+        DataTable dta = new DataTable();
+        DataTable dt = new DataTable();
+        string encabezado;
+        #endregion variables
         private void ArbolAVL_Paint(object sender, PaintEventArgs en)
         {
             
@@ -73,19 +79,14 @@ namespace ProyectoEDD2.Formularios
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 string val = "";
-                val = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                val = dataGridView1.Rows[i].Cells[1].Value.ToString();
                 idlbl.Text = val;
                 cont++;
                 if (valor.Text == idlbl.Text)
                 {
+                    int indice = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value.ToString());
                     encontrado = true;
-                    for (int j = 0; j < dataGridView2.Columns.Count; j++)
-                    {
-                        registro[0] += dataGridView2.Rows[i].Cells[j].Value.ToString() + "|";
-                    }
-
-                        MessageBox.Show("Existe un registro con la respectiva ID", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        MessageBox.Show(registro[0], "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Recorrido del arbol
                     try
                     {
                         datb = int.Parse(valor.Text);
@@ -99,6 +100,14 @@ namespace ProyectoEDD2.Formularios
                     {
                         MessageBox.Show(ex.ToString());
                     }
+
+                    for (int j = 0; j < dta.Columns.Count; j++)
+                    {
+                        registro[0] += dta.Rows[indice][j].ToString() + "|";
+                    }
+
+                        MessageBox.Show("Existe un registro con la respectiva ID", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(registro[0], "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 }
             }
@@ -137,48 +146,10 @@ namespace ProyectoEDD2.Formularios
                     errores.SetError(valor, "Debe ser numérico");
                 }
             }
-            Refresh(); Refresh(); Refresh();
+            Refresh(); Refresh(); Refresh();
+
         }
 
-        //Al presionar enter que realice las operaciones
-
-        private void valor_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            //if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            //{
-            //    errores.Clear();
-            //    if (valor.Text == "")
-            //    {
-            //        errores.SetError(valor, "Valor obligatorio");
-            //    }
-            //    else
-            //    {
-            //        try
-            //        {
-
-            //            dato = int.Parse(valor.Text);
-            //            if (dato > 0)
-            //            {
-            //                arbolAVL.Insertar(dato);
-            //                valor.Clear();
-            //                valor.Focus();
-            //                lblaltura.Text = arbolAVL.Raiz.getAltura(arbolAVL.Raiz).ToString();
-            //                cont++;
-            //                Refresh();
-            //                Refresh();
-            //            }
-            //            else
-            //            {
-            //                errores.SetError(valor, "Debe ser un numero mayor que 0");
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            errores.SetError(valor, "Debe ser numérico");
-            //        }
-            //    }
-            //}
-        }
 
         private void ArbolAVL_Load(object sender, EventArgs e)
         {
@@ -187,36 +158,30 @@ namespace ProyectoEDD2.Formularios
 
         private void BTNCargarTabla_Click(object sender, EventArgs e)
         {
-            string[] divisores = { "|", "||" };
-            string nombre,encabezado;
+            string nombre;
+            string header;
+            string indice;
             dataGridView1.Columns.Clear();
-            dataGridView2.Columns.Clear();
+            dta.Clear();
+            dt.Clear();
             openFileDialog1.FileName = "";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string[] archivo = openFileDialog1.FileName.Split('.');
                 nombre = archivo[0] + ".txt";
-                StreamReader reader = new StreamReader(archivo[0] + "Header.txt");
+                header = archivo[0] + "Header.txt";
+                indice = archivo[0] + "Index.txt";
+                StreamReader reader = new StreamReader(header);
                 encabezado = reader.ReadLine();
                 string[] fila = encabezado.Split(divisores, StringSplitOptions.RemoveEmptyEntries);
-                int x = 0;
-                for (int i = 1; i < fila.Length; i += 2)
+                for (int x = 0; x < fila.Length; x += 2)
                 {
-                    dataGridView1.Columns.Add(fila[x], fila[x]);
-                    dataGridView1.Columns[fila[x]].Width = 150;
-                    ((DataGridViewTextBoxColumn)dataGridView1.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
-                    //datagrid 2
-                    dataGridView2.Columns.Add(fila[x], fila[x]);
-                    dataGridView2.Columns[fila[x]].Width = 150;
-                    ((DataGridViewTextBoxColumn)dataGridView2.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
-                    x = x + 2;
+                    dta.Columns.Add(fila[x]);
                 }
-                CargarDatos(nombre);
-                CargarDatos2(nombre);
-                arbolI();
-                string Slinea = reader.ReadLine();
                 reader.Close();
+                CargarDatos(nombre);
+                CargarIndice(indice);
             }
         }
 
@@ -227,25 +192,32 @@ namespace ProyectoEDD2.Formularios
                 string text = String.Empty;
                 for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
                 {
-                    string[] fila = text.Split(new char[] { '|' });
-                    dataGridView1.Rows.Add(fila);
+                    string[] fila = text.Split(divisor, StringSplitOptions.RemoveEmptyEntries);
+                    dta.Rows.Add(fila);
                 }
                 sr.Close();
             }
         }
 
-        private void CargarDatos2(String name)
+        private void CargarIndice(String name)
         {
-            using (StreamReader sr = new StreamReader(name))
+            StreamReader reader = new StreamReader(name);
+            string tipo = reader.ReadLine();
+            dt.Columns.Add("Posicion");
+            dt.Columns.Add("Referencia");
+            string contenido = reader.ReadToEnd();
+            string[] filas = contenido.Split(divisor, StringSplitOptions.RemoveEmptyEntries);
+            int x = 0;
+            for (int i = 1; i < filas.Length; i += 2)
             {
-                string text = String.Empty;
-                for (text = sr.ReadLine(); text != null; text = sr.ReadLine())
-                {
-                    string[] fila = text.Split(new char[] { '|' });
-                    dataGridView2.Rows.Add(fila);
-                }
-                sr.Close();
+                dt.Rows.Add(filas[x], filas[i]);
+                x += 2;
             }
+            reader.Close();
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].Width = 70;
+            dataGridView1.Columns[1].Width = 70;
+            arbolI();
         }
 
         void arbolI()
@@ -253,7 +225,7 @@ namespace ProyectoEDD2.Formularios
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 string val = "";
-                val = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                val = dataGridView1.Rows[i].Cells[1].Value.ToString();
                 valor.Text = val;
                 Insertaravl();
             }
@@ -308,6 +280,58 @@ namespace ProyectoEDD2.Formularios
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void valor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                bool encontrado = false;
+                string[] registro = { "" };
+                int cont = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string val = "";
+                    val = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                    idlbl.Text = val;
+                    cont++;
+                    if (valor.Text == idlbl.Text)
+                    {
+                        int indice = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                        encontrado = true;
+                        //Recorrido del arbol
+                        try
+                        {
+                            datb = int.Parse(valor.Text);
+                            arbolAVL.buscar(datb);
+                            pintaR = 2;
+                            Refresh();
+                            valor.Clear();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+                        //busqueda en el archivo de registros basandose en el indice
+                        for (int j = 0; j < dta.Columns.Count; j++)
+                        {
+                            registro[0] += dta.Rows[indice][j].ToString() + "|";
+                        }
+
+                        MessageBox.Show("Existe un registro con la respectiva ID", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(registro[0], "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    }
+                }
+                if (encontrado == false)
+                {
+                    MessageBox.Show("No existe un registro con la respectiva ID", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errores.SetError(valor, "No existe");
+                }
+
+                errores.Clear();
+            }
         }
     }
 }

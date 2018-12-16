@@ -131,5 +131,10 @@ namespace ProyectoEDD2.Formularios
                 MessageBox.Show("No puede dejar campos vacios", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
