@@ -86,6 +86,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ArchivoHeader.cs" />
+    <Compile Include="Clases\A_AVL.cs" />
+    <Compile Include="Clases\A_DibujarAVL.cs" />
     <Compile Include="Clases\ICrearArchivo.cs" />
     <Compile Include="Clases\IndexArchivo.cs" />
     <Compile Include="Clases\MainArchivo.cs" />
@@ -94,6 +96,12 @@
     </Compile>
     <Compile Include="Formularios\AgregarInfo.Designer.cs">
       <DependentUpon>AgregarInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ArbolAVL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ArbolAVL.Designer.cs">
+      <DependentUpon>ArbolAVL.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\EliminarT.cs">
       <SubType>Form</SubType>
@@ -117,6 +125,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\AgregarInfo.resx">
       <DependentUpon>AgregarInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ArbolAVL.resx">
+      <DependentUpon>ArbolAVL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\CrearTabla.resx">
       <DependentUpon>CrearTabla.cs</DependentUpon>

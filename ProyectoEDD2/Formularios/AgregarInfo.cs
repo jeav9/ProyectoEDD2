@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoEDD2.Clases;
 
 namespace ProyectoEDD2.Formularios
 {
@@ -193,5 +194,9 @@ namespace ProyectoEDD2.Formularios
         {
 
         }
+
+
+        
+        
     }
 }
