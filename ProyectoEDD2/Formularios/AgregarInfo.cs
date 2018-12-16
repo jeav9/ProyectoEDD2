@@ -21,6 +21,7 @@ namespace ProyectoEDD2.Formularios
         #region variables
         StreamReader reader;
         DataTable IndicesDS = new DataTable("Indices");
+        string TipoArbol;
         string[] divisores = { "|", "||" };
         string[] divisor = { "|" };
         string encabezado;
@@ -59,8 +60,8 @@ namespace ProyectoEDD2.Formularios
         private void CargarIndices(string name)
         {
             StreamReader indices = new StreamReader(name);
-            string lineas = indices.ReadLine();
-            lineas = indices.ReadToEnd();
+            TipoArbol = indices.ReadLine();
+            string lineas = indices.ReadToEnd();
             string[] lista = lineas.Split(divisor,StringSplitOptions.RemoveEmptyEntries);
             int x = 0;
             for(int i=1; i<lista.Length; i+=2)
@@ -159,7 +160,8 @@ namespace ProyectoEDD2.Formularios
             }
             string[] nombre = this.label2.Text.Split('.');
             StreamWriter writer = new StreamWriter(nombre[0] + "Index.txt");
-            for (int i=0; i< dataGridView2.Rows.Count; i++)
+            writer.WriteLine(TipoArbol);
+            for (int i=0; i < dataGridView2.Rows.Count; i++)
             {
                 writer.WriteLine(index + "|" + this.dataGridView2.Rows[i].Cells[0].Value+"|");
                 index++;
@@ -225,10 +227,10 @@ namespace ProyectoEDD2.Formularios
                         }
                     }
                 }
-                guardarIndices();
                 dataGridView1.Rows.Clear();
                 dataGridView2.Rows.Clear();
                 lectura();
+                guardarIndices();
             }
         }
     }
