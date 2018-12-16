@@ -74,7 +74,7 @@ namespace ProyectoEDD2.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text != string.Empty)
+            if (txtNombre.Text != string.Empty && comboBox1.Text != string.Empty)
             {
                 saveFileDialog1.FileName = txtNombre.Text;
                 saveFileDialog1.Filter = "Archivos txt (*.txt)|*.txt";
@@ -86,7 +86,7 @@ namespace ProyectoEDD2.Formularios
                     crear = new ArchivoHeader(ruta[0], dataGridView1);
                     crear.CrearArchivo();
                     //Crea archivo de indices
-                    crear = new IndexArchivo(ruta[0]);
+                    crear = new IndexArchivo(ruta[0],comboBox1.Text);
                     crear.CrearArchivo();
                     //Limpia la tabla
                     dataGridView1.Rows.Clear();
@@ -98,7 +98,7 @@ namespace ProyectoEDD2.Formularios
             }
             else
             {
-                MessageBox.Show("Falta el nombre del archivo", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Falta el nombre del archivo o tipo de indices", "Archivos de texto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

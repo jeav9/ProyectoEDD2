@@ -20,6 +20,7 @@ namespace ProyectoEDD2.Formularios
         }
         #region variables
         StreamReader reader;
+        DataTable IndicesDS = new DataTable("Indices");
         string[] divisores = { "|", "||" };
         string[] divisor = { "|" };
         string encabezado;
@@ -55,6 +56,21 @@ namespace ProyectoEDD2.Formularios
             }
         }
 
+        private void CargarIndices(string name)
+        {
+            StreamReader indices = new StreamReader(name);
+            string lineas = indices.ReadLine();
+            lineas = indices.ReadToEnd();
+            string[] lista = lineas.Split(divisor,StringSplitOptions.RemoveEmptyEntries);
+            int x = 0;
+            for(int i=1; i<lista.Length; i+=2)
+            {
+                IndicesDS.Rows.Add(lista[x],lista[i]);
+                x += 2;
+            }
+            indices.Close();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -62,6 +78,11 @@ namespace ProyectoEDD2.Formularios
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //Agregar columnas al dataset de indices
+            IndicesDS.Columns.Add("Index");
+            IndicesDS.Columns.Add("Id");
+            string IndicesName;
+            //
             string nombre;
             dataGridView1.Columns.Clear();
             dataGridView2.Columns.Clear();
@@ -71,6 +92,7 @@ namespace ProyectoEDD2.Formularios
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string[] archivo = openFileDialog1.FileName.Split('.');
+                IndicesName = archivo[0];
                 nombre = archivo[0] + ".txt";
                 label2.Text = nombre;
                 label1.Text = archivo[0] + "Header.txt";
@@ -89,6 +111,7 @@ namespace ProyectoEDD2.Formularios
                     ((DataGridViewTextBoxColumn)dataGridView2.Columns[fila[x]]).MaxInputLength = Convert.ToInt32(fila[i]);
                     x = x + 2;
                 }
+                CargarIndices(IndicesName + "Index.txt");
                 CargarDatos(nombre);
                 string Slinea = reader.ReadLine();
                 reader.Close();
@@ -127,6 +150,23 @@ namespace ProyectoEDD2.Formularios
             texto.Close();
         }
 
+        void guardarIndices()
+        {
+            int index = 0;
+            if(this.IndicesDS.Rows.Count != 0)
+            {
+                index = this.IndicesDS.Rows.Count-1;
+            }
+            string[] nombre = this.label2.Text.Split('.');
+            StreamWriter writer = new StreamWriter(nombre[0] + "Index.txt");
+            for (int i=0; i< dataGridView2.Rows.Count; i++)
+            {
+                writer.WriteLine(index + "|" + this.dataGridView2.Rows[i].Cells[0].Value+"|");
+                index++;
+            }
+            writer.Close();
+        }
+
         void lista()
         {
             //Actualizando el archivo con la lista de disponibles actual
@@ -160,6 +200,7 @@ namespace ProyectoEDD2.Formularios
                 dataGridView3.Rows.RemoveAt(0);
                 dataGridView1.Rows.Clear();
                 guardardatos();
+                guardarIndices();
                 lista();
             }
             else
@@ -184,19 +225,11 @@ namespace ProyectoEDD2.Formularios
                         }
                     }
                 }
+                guardarIndices();
                 dataGridView1.Rows.Clear();
                 dataGridView2.Rows.Clear();
                 lectura();
             }
         }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-        
-        
     }
 }
