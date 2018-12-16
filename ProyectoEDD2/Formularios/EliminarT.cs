@@ -19,9 +19,48 @@ namespace ProyectoEDD2.Formularios
         }
         #region variables
         StreamReader reader;
+        string nombreIndice;
         string[] divisores = { "|", "||" };
         string encabezado;
         #endregion
+
+        void ActualizarIndice()
+        {//Cargar Archivo
+            string[] divisor = { "|" };
+            StreamReader streamReader = new StreamReader(nombreIndice);
+            string tipo = streamReader.ReadLine();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("index");
+            dt.Columns.Add("reference");
+            string contenido = streamReader.ReadToEnd();
+            string[] columnas = contenido.Split(divisor, StringSplitOptions.RemoveEmptyEntries);
+            int x = 0;
+            for(int i=1; i < columnas.Length; i += 2)
+            {
+                dt.Rows.Add(columnas[x], columnas[i]);
+                x += 2;
+            }
+            streamReader.Close();
+            //buscar
+            int pos=0;
+            for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (dt.Rows[i][1].Equals(textBox1.Text))
+                {
+                    pos = i;
+                    break;
+                }
+            }
+            dt.Rows[pos][1] = "*";
+            //actualizar
+            StreamWriter streamWriter = new StreamWriter(nombreIndice);
+            streamWriter.WriteLine(tipo);
+            for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                streamWriter.WriteLine(dt.Rows[i][0]+"|"+dt.Rows[i][1]+"|");
+            }
+            streamWriter.Close();
+        }
         private void CargarDatos(string name)
         {
             using (StreamReader sr = new StreamReader(name))
@@ -47,6 +86,7 @@ namespace ProyectoEDD2.Formularios
             {
                 string[] archivo = openFileDialog1.FileName.Split('.');
                 label1.Text = archivo[0]+"Header.txt";
+                nombreIndice = archivo[0] + "Index.txt";
                 nombre = archivo[0] + ".txt";
                 label2.Text = nombre;
                 reader = new StreamReader(label1.Text);
@@ -89,6 +129,7 @@ namespace ProyectoEDD2.Formularios
                 {
                     if (row.Cells[0].Value.ToString().Equals(valor))
                     {
+                        ActualizarIndice();
                         encontrado = true;
                         Indice = row.Index;
                         DataGridViewRow eliminar = dataGridView1.Rows[Indice];
