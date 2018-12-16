@@ -37,5 +37,12 @@ namespace ProyectoEDD2
             eliminar.MdiParent = this;
             eliminar.Show();
         }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            Formularios.ArbolAVL avl = new Formularios.ArbolAVL();
+            avl.MdiParent = this;
+            avl.Show();
+        }
     }
 }

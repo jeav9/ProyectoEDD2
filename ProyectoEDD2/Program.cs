@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ProyectoEDD2.Formularios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,5 +20,8 @@ namespace ProyectoEDD2
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Menu());
         }
+
     }
+
+    
 }
