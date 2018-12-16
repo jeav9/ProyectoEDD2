@@ -187,47 +187,66 @@ namespace ProyectoEDD2.Formularios
         private void button6_Click(object sender, EventArgs e)
         {
             //AGREGAR NUEVA LINEA EN EL DATAGRID
-            if (dataGridView3.Rows.Count != 0)
+            if (!Buscar())
             {
-                int fila = Convert.ToInt32(dataGridView3.Rows[0].Cells[0].Value);
-                DataGridViewRow nuevo = dataGridView2.Rows[fila];
-                for (int i = 0; i < dataGridView2.Columns.Count; i++)
+                if (dataGridView3.Rows.Count != 0)
                 {
-                    nuevo.Cells[i].Value = dataGridView1.Rows[0].Cells[i].Value.ToString();
+                    int fila = Convert.ToInt32(dataGridView3.Rows[0].Cells[0].Value);
+                    DataGridViewRow nuevo = dataGridView2.Rows[fila];
+                    for (int i = 0; i < dataGridView2.Columns.Count; i++)
+                    {
+                        nuevo.Cells[i].Value = dataGridView1.Rows[0].Cells[i].Value.ToString();
+                    }
+                    dataGridView3.Rows.RemoveAt(0);
+                    dataGridView1.Rows.Clear();
+                    guardardatos();
+                    guardarIndices();
+                    lista();
                 }
-                dataGridView3.Rows.RemoveAt(0);
-                dataGridView1.Rows.Clear();
-                guardardatos();
-                guardarIndices();
-                lista();
+                else
+                {
+                    using (var stream = File.Open(label2.Text, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                    using (var readers = new StreamReader(stream))
+                    using (var writer = new StreamWriter(stream))
+                    {
+                        //NUEVA LINEA EN EL TEXTO
+                        long posicion = stream.Length == 0 ? 0 : -1;
+                        stream.Seek(posicion, SeekOrigin.End);
+                        string final = readers.ReadToEnd();
+                        if (final.Length != 0 && !final.Equals("\n", StringComparison.Ordinal))
+                        {
+                            writer.Write(Environment.NewLine);
+                        }
+                        for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                        {
+                            for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                            {
+                                writer.Write(dataGridView1.Rows[i].Cells[j].Value.ToString() + "|");
+                            }
+                        }
+                    }
+                    dataGridView1.Rows.Clear();
+                    dataGridView2.Rows.Clear();
+                    lectura();
+                    guardarIndices();
+                }
             }
             else
             {
-                using (var stream = File.Open(label2.Text, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
-                using (var readers = new StreamReader(stream))
-                using (var writer = new StreamWriter(stream))
-                {
-                    //NUEVA LINEA EN EL TEXTO
-                    long posicion = stream.Length == 0 ? 0 : -1;
-                    stream.Seek(posicion, SeekOrigin.End);
-                    string final = readers.ReadToEnd();
-                    if (final.Length != 0 && !final.Equals("\n", StringComparison.Ordinal))
-                     {
-                        writer.Write(Environment.NewLine);
-                     }
-                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                    {
-                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
-                        {
-                            writer.Write(dataGridView1.Rows[i].Cells[j].Value.ToString() + "|");
-                        }
-                    }
-                }
-                dataGridView1.Rows.Clear();
-                dataGridView2.Rows.Clear();
-                lectura();
-                guardarIndices();
+                MessageBox.Show("El numero de Id ya existe, Ingrese uno distinto.");
             }
+        }
+
+        bool Buscar()
+        {
+            for (int i=0; i < dataGridView2.Rows.Count; i++)
+            {
+                if(dataGridView2.Rows[i].Cells[0].Value.Equals(dataGridView1.Rows[0].Cells[0].Value))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
